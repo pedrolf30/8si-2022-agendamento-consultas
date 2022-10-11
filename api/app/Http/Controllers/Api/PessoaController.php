@@ -34,7 +34,7 @@ class PessoaController extends Controller
         return response()->json([
             'mensagem' => "Pessoa criada com sucesso!",
             'pessoa' => $pessoa
-        ]);
+        ], 201);
     } 
 
     /**
@@ -78,6 +78,6 @@ class PessoaController extends Controller
         return response()->json([
             'mensagem' => "Pessoa deletada com sucesso!",
             'pessoa' => $pessoa
-        ]);
+        ], 204);
     }
 }
