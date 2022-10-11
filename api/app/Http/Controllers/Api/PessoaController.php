@@ -37,11 +37,11 @@ class PessoaController extends Controller
      */
     public function store(StorePessoaRequest $request)
     {
-        $post = Pessoa::create($request->all());
+        $pessoa = Pessoa::create($request->all());
 
         return response()->json([
             'mensagem' => "Pessoa criada com sucesso!",
-            'pessoa' => $post
+            'pessoa' => $pessoa
         ]);
     } 
 
@@ -74,9 +74,14 @@ class PessoaController extends Controller
      * @param  \App\Models\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pessoa $pessoa)
+    public function update(StorePessoaRequest $request, Pessoa $pessoa)
     {
-        //
+        $pessoa->update($request->all());
+
+        return response()->json([
+            'mensagem' => "Pessoa atualizada com sucesso!",
+            'pessoa' => $pessoa
+        ]);
     }
 
     /**
