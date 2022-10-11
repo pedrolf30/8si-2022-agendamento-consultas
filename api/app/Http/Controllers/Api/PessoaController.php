@@ -16,17 +16,9 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $pessoas = Pessoa::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json($pessoas);
     }
 
     /**
@@ -53,18 +45,7 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pessoa $pessoa)
-    {
-        //
+        return response()->json($pessoa);
     }
 
     /**
@@ -82,16 +63,5 @@ class PessoaController extends Controller
             'mensagem' => "Pessoa atualizada com sucesso!",
             'pessoa' => $pessoa
         ]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pessoa $pessoa)
-    {
-        //
     }
 }
