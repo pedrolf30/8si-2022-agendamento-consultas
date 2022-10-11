@@ -64,4 +64,20 @@ class PessoaController extends Controller
             'pessoa' => $pessoa
         ]);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Pessoa  $pessoa
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Pessoa $pessoa)
+    {
+        $pessoa->delete();
+
+        return response()->json([
+            'mensagem' => "Pessoa deletada com sucesso!",
+            'pessoa' => $pessoa
+        ]);
+    }
 }
