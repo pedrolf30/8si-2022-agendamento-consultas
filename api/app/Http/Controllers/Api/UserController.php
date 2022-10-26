@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,10 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return response()->json($users);
     }
 
-    
     /**
      * Display the specified resource.
      *
@@ -27,7 +29,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return response()->json($user);
     }
 
     /**
@@ -37,9 +39,14 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $user->update($request->all());
+
+        return response()->json([
+            'mensagem' => "Usuário atualizado com sucesso!",
+            'usuário' => $user
+        ]);
     }
 
     /**
