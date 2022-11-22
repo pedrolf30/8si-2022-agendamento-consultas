@@ -10,18 +10,6 @@ use Carbon\Carbon;
 
 class ConsultaControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_index()
-    {
-        $response = $this->get('/api/consultas');
-
-        $response->assertStatus(200);
-    }
-
     public function test_store()
     {
         $consulta = new Consulta;
@@ -31,6 +19,13 @@ class ConsultaControllerTest extends TestCase
 
         $response = $this->post("/api/consultas", $consulta->toArray());
         $response->assertStatus(201);
+    }
+
+    public function test_index()
+    {
+        $response = $this->get('/api/consultas');
+
+        $response->assertStatus(200);
     }
 
     public function test_show()

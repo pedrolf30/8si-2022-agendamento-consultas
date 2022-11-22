@@ -9,18 +9,6 @@ use Tests\TestCase;
 
 class PacienteControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_index()
-    {
-        $response = $this->get('/api/pacientes');
-
-        $response->assertStatus(200);
-    }
-
     public function test_store()
     {
         $paciente = new Paciente;
@@ -29,6 +17,13 @@ class PacienteControllerTest extends TestCase
 
         $response = $this->post("/api/pacientes", $paciente->toArray());
         $response->assertStatus(201);
+    }
+    
+    public function test_index()
+    {
+        $response = $this->get('/api/pacientes');
+
+        $response->assertStatus(200);
     }
 
     public function test_show()
