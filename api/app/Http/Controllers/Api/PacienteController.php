@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Paciente;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
+use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
 {
@@ -45,7 +46,13 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        return response()->json($paciente::with('pessoa')->get());
+        $paciente = DB::table('pacientes as pac')
+        ->join('pessoas as pes', 'pac.pessoa_id', 'pes.id')
+        ->where('pac.id', '=', $paciente->id)
+        ->select('pac.id', 'pac.convenio', 'pes.nome')
+        ->get();
+    
+        return response()->json($paciente);
     }
 
     /**
