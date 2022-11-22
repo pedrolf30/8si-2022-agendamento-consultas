@@ -24,14 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::apiResource('usuarios', UserController::class);
-Route::apiResource('pessoas', PessoaController::class);
-Route::apiResource('pacientes', PacienteController::class);
-Route::apiResource('pacientes.consultas', PacienteConsultaController::class);
-Route::apiResource('medicos', MedicoController::class);
-Route::apiResource('medicos.consultas', MedicoConsultaController::class);
-Route::apiResource('consultas', ConsultaController::class);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('logout', [AuthController::class, 'logout']);
+    Route::apiResource('usuarios', UserController::class);
+    Route::apiResource('pessoas', PessoaController::class);
+    Route::apiResource('pacientes', PacienteController::class);
+    Route::apiResource('pacientes.consultas', PacienteConsultaController::class);
+    Route::apiResource('medicos', MedicoController::class);
+    Route::apiResource('medicos.consultas', MedicoConsultaController::class);
+    Route::apiResource('consultas', ConsultaController::class);
 });

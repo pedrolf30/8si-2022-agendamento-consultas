@@ -21,7 +21,7 @@ class PessoaSeeder extends Seeder
                 'cpf' => '502.xxx.xxx-xx',
                 'email' => 'pedro@gmail.com',
                 'telefone' => '(19)99999-9999',
-                'isUsuario' => 1,
+                'isUsuario' => 0,
                 'dtNasc' => "2001-02-19",
             ],
         );
