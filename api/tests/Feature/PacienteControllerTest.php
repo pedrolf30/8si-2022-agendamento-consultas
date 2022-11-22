@@ -39,6 +39,14 @@ class PacienteControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_show_appointments()
+    {
+        $paciente = Paciente::query()->inRandomOrder()->first();
+
+        $response = $this->get("/api/pacientes/{$paciente->id}/consultas");
+        $response->assertStatus(200);
+    }
+
     public function test_update()
     {
         $paciente = Paciente::query()->inRandomOrder()->first();

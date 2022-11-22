@@ -40,6 +40,14 @@ class MedicoControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_show_appointments()
+    {
+        $medico = Medico::query()->inRandomOrder()->first();
+
+        $response = $this->get("/api/medicos/{$medico->id}/consultas");
+        $response->assertStatus(200);
+    }
+
     public function test_update()
     {
         $medico = Medico::query()->inRandomOrder()->first();
