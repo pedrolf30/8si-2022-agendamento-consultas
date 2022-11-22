@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Api\PessoaController;
 use App\Http\Controllers\Api\PacienteController;
+use App\Http\Controllers\Api\PacienteConsultaController;
 use App\Http\Controllers\Api\MedicoController;
+use App\Http\Controllers\Api\MedicoConsultaController;
 use App\Http\Controllers\Api\ConsultaController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
@@ -25,7 +27,9 @@ Route::post('login', [AuthController::class, 'login']);
 Route::apiResource('usuarios', UserController::class);
 Route::apiResource('pessoas', PessoaController::class);
 Route::apiResource('pacientes', PacienteController::class);
+Route::apiResource('pacientes.consultas', PacienteConsultaController::class);
 Route::apiResource('medicos', MedicoController::class);
+Route::apiResource('medicos.consultas', MedicoConsultaController::class);
 Route::apiResource('consultas', ConsultaController::class);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
