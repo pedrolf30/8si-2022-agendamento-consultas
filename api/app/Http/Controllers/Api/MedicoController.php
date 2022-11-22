@@ -46,13 +46,13 @@ class MedicoController extends Controller
      */
     public function show(Medico $medico)
     {
-        $paciente = DB::table('medicos as med')
+        $medico = DB::table('medicos as med')
         ->join('pessoas as pes', 'med.pessoa_id', 'pes.id')
         ->where('med.id', '=', $medico->id)
         ->select('med.id', 'med.crm', 'med.especialidade', 'pes.nome')
         ->get();
     
-        return response()->json($paciente);
+        return response()->json($medico);
     }
 
     /**
