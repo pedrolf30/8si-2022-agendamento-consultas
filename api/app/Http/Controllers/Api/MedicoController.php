@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Medico;
 use App\Http\Requests\StoreMedicoRequest;
 use App\Http\Requests\UpdateMedicoRequest;
+use Illuminate\Support\Facades\DB;
 
 class MedicoController extends Controller
 {
@@ -45,7 +46,13 @@ class MedicoController extends Controller
      */
     public function show(Medico $medico)
     {
-        return response()->json($medico::with('pessoa')->get());
+        $paciente = DB::table('medicos as med')
+        ->join('pessoas as pes', 'med.pessoa_id', 'pes.id')
+        ->where('med.id', '=', $medico->id)
+        ->select('med.id', 'med.crm', 'med.especialidade', 'pes.nome')
+        ->get();
+    
+        return response()->json($paciente);
     }
 
     /**
